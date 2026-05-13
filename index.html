@@ -1,0 +1,2133 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nezzo App - Ihr umfassendes digitales Ökosystem mit AI, Chat, Cloud, Host, Vocab und Text Lösungen">
+    <meta name="keywords" content="Nezzo, AI, Chat, Cloud, Host, Vocab, Text, LobiGmbh, JoviGmbh">
+    <meta name="author" content="Nezzo Team">
+    <title>Nezzo App - Willkommen bei der Zukunft</title>
+    <style>
+        /* ============================================
+           CSS RESET & BASE STYLES
+           ============================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --primary-dark: #1d4ed8;
+            --primary-light: #3b82f6;
+            --secondary-color: #7c3aed;
+            --accent-color: #06b6d4;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --dark-bg: #0f172a;
+            --dark-card: #1e293b;
+            --dark-hover: #334155;
+            --light-bg: #f8fafc;
+            --light-card: #ffffff;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --text-dark: #1e293b;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --gradient-4: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            --gradient-5: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            --gradient-6: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --transition: all 0.3s ease;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--light-bg);
+            overflow-x: hidden;
+        }
+
+        /* ============================================
+           NAVIGATION
+           ============================================ */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled {
+            padding: 0.5rem 0;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            background: var(--gradient-3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-3);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--gradient-3);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .nav-cta {
+            background: var(--gradient-3);
+            color: white !important;
+            padding: 0.75rem 1.5rem !important;
+            border-radius: 25px;
+            font-weight: 600 !important;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* ============================================
+           HERO SECTION
+           ============================================ */
+        .hero {
+            min-height: 100vh;
+            background: var(--dark-bg);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 2rem 4rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(37, 99, 235, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(124, 58, 237, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(6, 182, 212, 0.2) 0%, transparent 50%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .hero-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: float 15s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            max-width: 1200px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(37, 99, 235, 0.2);
+            border: 1px solid rgba(37, 99, 235, 0.5);
+            color: var(--accent-color);
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero-title {
+            font-size: 4.5rem;
+            font-weight: 900;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        .hero-title span {
+            background: var(--gradient-3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.6s both;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--gradient-3);
+            color: white;
+            box-shadow: 0 4px 15px rgba(6, 182, 212, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(6, 182, 212, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--accent-color);
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-top: 4rem;
+            animation: fadeInUp 0.8s ease 0.8s both;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            background: var(--gradient-3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ============================================
+           SERVICES SECTION
+           ============================================ */
+        .services {
+            padding: 6rem 2rem;
+            background: var(--light-bg);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #64748b;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: var(--light-card);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-1);
+            transform: scaleX(0);
+            transition: var(--transition);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .service-icon.ai { background: var(--gradient-1); }
+        .service-icon.chat { background: var(--gradient-2); }
+        .service-icon.cloud { background: var(--gradient-3); }
+        .service-icon.host { background: var(--gradient-4); }
+        .service-icon.vocab { background: var(--gradient-5); }
+        .service-icon.text { background: var(--gradient-6); }
+
+        .service-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .service-description {
+            color: #64748b;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .service-features li {
+            padding: 0.5rem 0;
+            color: #475569;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            color: var(--success-color);
+            font-weight: bold;
+        }
+
+        .service-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .service-link:hover {
+            gap: 1rem;
+        }
+
+        /* ============================================
+           LEADERSHIP SECTION
+           ============================================ */
+        .leadership {
+            padding: 6rem 2rem;
+            background: var(--dark-bg);
+            position: relative;
+        }
+
+        .leadership .section-title {
+            color: var(--text-primary);
+        }
+
+        .leadership .section-subtitle {
+            color: var(--text-secondary);
+        }
+
+        .leadership-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .leader-card {
+            background: var(--dark-card);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+        }
+
+        .leader-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+        }
+
+        .leader-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: var(--gradient-3);
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            font-weight: bold;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .leader-name {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .leader-role {
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .leader-bio {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* ============================================
+           DOWNLOAD SECTION
+           ============================================ */
+        .download {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .download::after {
+            content: '';
+            position: absolute;
+            bottom: -50%;
+            left: -50%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .download-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .download .section-title {
+            color: white;
+        }
+
+        .download .section-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .download-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .download-option {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: var(--transition);
+        }
+
+        .download-option:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+
+        .download-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .download-option h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .download-option p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1.5rem;
+        }
+
+        .download-btn {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 0.75rem 2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* ============================================
+           FEATURES SECTION
+           ============================================ */
+        .features {
+            padding: 6rem 2rem;
+            background: var(--light-bg);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .feature-item {
+            display: flex;
+            gap: 1.5rem;
+            padding: 2rem;
+            background: var(--light-card);
+            border-radius: 15px;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+        }
+
+        .feature-item:hover {
+            transform: translateX(10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-3);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .feature-content h3 {
+            font-size: 1.3rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-content p {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        /* ============================================
+           TESTIMONIALS SECTION
+           ============================================ */
+        .testimonials {
+            padding: 6rem 2rem;
+            background: var(--dark-bg);
+        }
+
+        .testimonials .section-title {
+            color: var(--text-primary);
+        }
+
+        .testimonials .section-subtitle {
+            color: var(--text-secondary);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: var(--dark-card);
+            border-radius: 20px;
+            padding: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+        }
+
+        .testimonial-card:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-5px);
+        }
+
+        .testimonial-stars {
+            color: #fbbf24;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-text {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient-3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .testimonial-info h4 {
+            color: var(--text-primary);
+            font-size: 1.1rem;
+        }
+
+        .testimonial-info p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* ============================================
+           CTA SECTION
+           ============================================ */
+        .cta {
+            padding: 6rem 2rem;
+            background: var(--light-card);
+            text-align: center;
+        }
+
+        .cta-box {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem;
+            background: var(--gradient-3);
+            border-radius: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .cta p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta .btn {
+            background: white;
+            color: #06b6d4;
+        }
+
+        .cta .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        .footer {
+            background: var(--dark-bg);
+            padding: 4rem 2rem 2rem;
+            color: var(--text-secondary);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto 3rem;
+        }
+
+        .footer-brand {
+            max-width: 300px;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 800;
+            background: var(--gradient-3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .footer-brand p {
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-links h4 {
+            color: var(--text-primary);
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-color);
+            padding-left: 5px;
+        }
+
+        .footer-contact p {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            color: var(--text-secondary);
+        }
+
+        /* ============================================
+           RESPONSIVE DESIGN
+           ============================================ */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--dark-bg);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .leadership-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+
+        /* ============================================
+           ANIMATIONS
+           ============================================ */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Loading Animation */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--dark-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loader-content {
+            text-align: center;
+        }
+
+        .loader-spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-top-color: var(--accent-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .loader-text {
+            color: var(--text-primary);
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        /* Scroll to Top Button */
+        .scroll-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+            border: none;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loader" id="loader">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <div class="loader-text">Nezzo App lädt...</div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">N</div>
+                Nezzo App
+            </a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Startseite</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#leadership">Team</a></li>
+                <li><a href="#testimonials">Referenzen</a></li>
+                <li><a href="#download" class="nav-cta">Download</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-particles" id="particles"></div>
+        <div class="hero-content">
+            <div class="hero-badge">🚀 Willkommen in der Zukunft</div>
+            <h1 class="hero-title">
+                Willkommen bei <span>Nezzo App</span>
+            </h1>
+            <p class="hero-subtitle">
+                Ihr umfassendes digitales Ökosystem für KI-gestützte Kommunikation, 
+                Cloud-Lösungen und innovative Technologien. Entwickelt von LobiGmbh und JoviGmbh.
+            </p>
+            <div class="hero-buttons">
+                <a href="#download" class="btn btn-primary">
+                    ⬇️ Jetzt herunterladen
+                </a>
+                <a href="#services" class="btn btn-secondary">
+                    ℹ️ Mehr erfahren
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-number" data-target="10000">0</div>
+                    <div class="stat-label">Aktive Nutzer</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="6">0</div>
+                    <div class="stat-label">Services</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="99">0</div>
+                    <div class="stat-label">% Zufriedenheit</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="24">0</div>
+                    <div class="stat-label">/7 Support</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="section-header fade-in">
+            <span class="section-tag">Unsere Services</span>
+            <h2 class="section-title">Das Nezzo Ökosystem</h2>
+            <p class="section-subtitle">
+                Entdecken Sie unsere sechs leistungsstarken Dienste, die speziell entwickelt wurden, 
+                um Ihr digitales Erlebnis zu revolutionieren.
+            </p>
+        </div>
+        <div class="services-grid">
+            <!-- Nezzo AI -->
+            <div class="service-card fade-in">
+                <div class="service-icon ai">🤖</div>
+                <h3 class="service-title">Nezzo AI</h3>
+                <p class="service-description">
+                    Künstliche Intelligenz der nächsten Generation. Nezzo AI bietet fortschrittliche 
+                    Machine-Learning-Algorithmen, die Ihre Arbeitsabläufe automatisieren und optimieren. 
+                    Von prädiktiver Analytik bis hin zu intelligenten Empfehlungen – Nezzo AI lernt 
+                    kontinuierlich und passt sich Ihren Bedürfnissen an.
+                </p>
+                <ul class="service-features">
+                    <li>Machine Learning & Deep Learning</li>
+                    <li>Natürliche Sprachverarbeitung (NLP)</li>
+                    <li>Bilderkennung und -analyse</li>
+                    <li>Prädiktive Analytik</li>
+                    <li>Automatisierte Entscheidungsfindung</li>
+                    <li>Echtzeit-Datenverarbeitung</li>
+                </ul>
+                <a href="#nezzo-ai" class="service-link">Mehr erfahren →</a>
+            </div>
+
+            <!-- Nezzo Chat -->
+            <div class="service-card fade-in">
+                <div class="service-icon chat">💬</div>
+                <h3 class="service-title">Nezzo Chat</h3>
+                <p class="service-description">
+                    Revolutionäre Kommunikationsplattform für Teams und Unternehmen. Nezzo Chat 
+                    verbindet Menschen nahtlos über alle Geräte hinweg. Mit Ende-zu-Ende-Verschlüsselung, 
+                    HD-Videoanrufen und intelligenten Bots ist Ihre Kommunikation sicher und effizient.
+                </p>
+                <ul class="service-features">
+                    <li>Ende-zu-Ende-Verschlüsselung</li>
+                    <li>HD-Video- und Audioanrufe</li>
+                    <li>Gruppenchats bis 10.000 Teilnehmer</li>
+                    <li>Dateifreigabe bis 10 GB</li>
+                    <li>Integration mit anderen Nezzo Services</li>
+                    <li>KI-gestützte Antwortvorschläge</li>
+                </ul>
+                <a href="#nezzo-chat" class="service-link">Mehr erfahren →</a>
+            </div>
+
+            <!-- Nezzo Cloud -->
+            <div class="service-card fade-in">
+                <div class="service-icon cloud">☁️</div>
+                <h3 class="service-title">Nezzo Cloud</h3>
+                <p class="service-description">
+                    Sichere, skalierbare Cloud-Infrastruktur für moderne Unternehmen. Nezzo Cloud 
+                    bietet unbegrenzten Speicher, automatische Backups und weltweite Verfügbarkeit. 
+                    Ihre Daten sind durch modernste Sicherheitstechnologien geschützt.
+                </p>
+                <ul class="service-features">
+                    <li>Unbegrenzter Cloud-Speicher</li>
+                    <li>Automatische Synchronisierung</li>
+                    <li>Versionierung und Backup</li>
+                    <li>Weltweite CDN-Verteilung</li>
+                    <li>Enterprise-grade Sicherheit</li>
+                    <li>99.99% Uptime-Garantie</li>
+                </ul>
+                <a href="#nezzo-cloud" class="service-link">Mehr erfahren →</a>
+            </div>
+
+            <!-- Nezzo Host -->
+            <div class="service-card fade-in">
+                <div class="service-icon host">🖥️</div>
+                <h3 class="service-title">Nezzo Host</h3>
+                <p class="service-description">
+                    Professionelles Hosting für Websites, Anwendungen und APIs. Nezzo Host bietet 
+                    Hochleistungs-Server, SSD-Speicher und globale Content-Delivery. Perfekt für 
+                    Startups und Enterprise-Lösungen gleichermaßen.
+                </p>
+                <ul class="service-features">
+                    <li>Hochleistungs-SSD-Server</li>
+                    <li>Automatische Skalierung</li>
+                    <li>SSL-Zertifikate inklusive</li>
+                    <li>DDoS-Schutz</li>
+                    <li>24/7 Server-Monitoring</li>
+                    <li>One-Click-Installationen</li>
+                </ul>
+                <a href="#nezzo-host" class="service-link">Mehr erfahren →</a>
+            </div>
+
+            <!-- Nezzo Vocab -->
+            <div class="service-card fade-in">
+                <div class="service-icon vocab">📚</div>
+                <h3 class="service-title">Nezzo Vocab</h3>
+                <p class="service-description">
+                    Intelligente Sprachlernplattform mit KI-Unterstützung. Nezzo Vocab hilft Ihnen, 
+                    neue Sprachen effektiv zu lernen. Mit personalisierten Lernpfaden, Aussprache-Training 
+                    und interaktiven Übungen meistern Sie jede Sprache.
+                </p>
+                <ul class="service-features">
+                    <li>Über 50 Sprachen verfügbar</li>
+                    <li>KI-gestütztes Aussprache-Training</li>
+                    <li>Personalisierte Lernpfade</li>
+                    <li>Interaktive Übungen und Quizze</li>
+                    <li>Offline-Lernmodus</li>
+                    <li>Fortschrittsverfolgung</li>
+                </ul>
+                <a href="#nezzo-vocab" class="service-link">Mehr erfahren →</a>
+            </div>
+
+            <!-- Nezzo Text -->
+            <div class="service-card fade-in">
+                <div class="service-icon text">📝</div>
+                <h3 class="service-title">Nezzo Text</h3>
+                <p class="service-description">
+                    Fortschrittliche Textverarbeitung und Dokumentenmanagement. Nezzo Text kombiniert 
+                    klassische Textverarbeitung mit KI-Funktionen wie automatischer Zusammenfassung, 
+                    Grammatikprüfung und Inhaltsgenerierung.
+                </p>
+                <ul class="service-features">
+                    <li>KI-gestützte Texterstellung</li>
+                    <li>Automatische Zusammenfassung</li>
+                    <li>Grammatik- und Stilprüfung</li>
+                    <li>Multi-Format-Export</li>
+                    <li>Kollaboratives Editing</li>
+                    <li>Vorlagen-Bibliothek</li>
+                </ul>
+                <a href="#nezzo-text" class="service-link">Mehr erfahren →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="section-header fade-in">
+            <span class="section-tag">Warum Nezzo?</span>
+            <h2 class="section-title">Besondere Merkmale</h2>
+            <p class="section-subtitle">
+                Entdecken Sie, was Nezzo App zur ersten Wahl für Millionen von Nutzern macht.
+            </p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-item fade-in">
+                <div class="feature-icon">🔒</div>
+                <div class="feature-content">
+                    <h3>Höchste Sicherheit</h3>
+                    <p>Ende-zu-Ende-Verschlüsselung und modernste Sicherheitstechnologien schützen Ihre Daten rund um die Uhr.</p>
+                </div>
+            </div>
+            <div class="feature-item fade-in">
+                <div class="feature-icon">⚡</div>
+                <div class="feature-content">
+                    <h3>Blitzschnell</h3>
+                    <p>Optimierte Performance und globale Server-Standorte gewährleisten schnellste Ladezeiten.</p>
+                </div>
+            </div>
+            <div class="feature-item fade-in">
+                <div class="feature-icon">🔄</div>
+                <div class="feature-content">
+                    <h3>Nahtlose Integration</h3>
+                    <p>Alle Nezzo Services arbeiten perfekt zusammen und integrieren sich in Ihre bestehenden Workflows.</p>
+                </div>
+            </div>
+            <div class="feature-item fade-in">
+                <div class="feature-icon">📱</div>
+                <div class="feature-content">
+                    <h3>Cross-Platform</h3>
+                    <p>Verfügbar auf allen Geräten – Desktop, Mobile, Tablet – mit synchronisiertem Erlebnis.</p>
+                </div>
+            </div>
+            <div class="feature-item fade-in">
+                <div class="feature-icon">🎯</div>
+                <div class="feature-content">
+                    <h3>Benutzerfreundlich</h3>
+                    <p>Intuitive Benutzeroberfläche, die keine Einarbeitungszeit benötigt. Einfach loslegen.</p>
+                </div>
+            </div>
+            <div class="feature-item fade-in">
+                <div class="feature-icon">🌍</div>
+                <div class="feature-content">
+                    <h3>Global Verfügbar</h3>
+                    <p>Weltweite Infrastruktur mit lokalem Support in über 50 Ländern.</p>
+                </div>
+            </div>
+            <div class="feature-item fade-in">
+                <div class="feature-icon">💡</div>
+                <div class="feature-content">
+                    <h3>KI-Powered</h3>
+                    <p>Integrierte Künstliche Intelligenz verbessert kontinuierlich Ihr Nutzererlebnis.</p>
+                </div>
+            </div>
+            <div class="feature-item fade-in">
+                <div class="feature-icon">🛠️</div>
+                <div class="feature-content">
+                    <h3>24/7 Support</h3>
+                    <p>Unser Expertenteam steht Ihnen rund um die Uhr zur Verfügung.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Section -->
+    <section class="leadership" id="leadership">
+        <div class="section-header fade-in">
+            <span class="section-tag">Unser Team</span>
+            <h2 class="section-title">Führungsteam</h2>
+            <p class="section-subtitle">
+                Lernen Sie die visionären Köpfe hinter Nezzo App kennen.
+            </p>
+        </div>
+        <div class="leadership-grid">
+            <div class="leader-card fade-in">
+                <div class="leader-avatar">L</div>
+                <h3 class="leader-name">LobiGmbh</h3>
+                <p class="leader-role">Chief Executive Officer (CEO)</p>
+                <p class="leader-bio">
+                    Als CEO von Nezzo App treibt LobiGmbh die strategische Vision und Innovation des 
+                    Unternehmens voran. Mit jahrelanger Erfahrung in der Technologiebranche und einem 
+                    unermüdlichen Einsatz für Exzellenz führt LobiGmbh das Team zu neuen Höhen. 
+                    Die Leidenschaft für disruptive Technologien und kundenzentrierte Lösungen 
+                    macht LobiGmbh zu einer inspirierenden Führungspersönlichkeit.
+                </p>
+            </div>
+            <div class="leader-card fade-in">
+                <div class="leader-avatar">J</div>
+                <h3 class="leader-name">JoviGmbh</h3>
+                <p class="leader-role">Chief Operating Officer (COO)</p>
+                <p class="leader-bio">
+                    Als COO von Nezzo App verantwortet JoviGmbh die operativen Abläufe und die 
+                    tägliche Geschäftsführung. Mit einem starken Fokus auf Effizienz, Qualität 
+                    und Kundenzufriedenheit stellt JoviGmbh sicher, dass alle Services reibungslos 
+                    funktionieren. Die Expertise in Prozessoptimierung und Teamführung macht 
+                    JoviGmbh zum unverzichtbaren Rückgrat des Unternehmens.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="section-header fade-in">
+            <span class="section-tag">Referenzen</span>
+            <h2 class="section-title">Was unsere Kunden sagen</h2>
+            <p class="section-subtitle">
+                Erfahren Sie, warum tausende Unternehmen auf Nezzo App vertrauen.
+            </p>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card fade-in">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">
+                    "Nezzo App hat unsere Geschäftsprozesse komplett transformiert. Die KI-Funktionen 
+                    sind unglaublich präzise und die Integration aller Services ist nahtlos."
+                </p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">M</div>
+                    <div class="testimonial-info">
+                        <h4>Max Mustermann</h4>
+                        <p>CEO, TechStart GmbH</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card fade-in">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">
+                    "Die Sicherheitsstandards von Nezzo Cloud sind beeindruckend. Wir fühlen uns 
+                    sicher und die Performance ist hervorragend. Absolut empfehlenswert!"
+                </p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">S</div>
+                    <div class="testimonial-info">
+                        <h4>Sarah Schmidt</h4>
+                        <p>CTO, InnovateCorp</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card fade-in">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">
+                    "Nezzo Vocab hat unserem gesamten Team geholfen, Englisch zu lernen. Die 
+                    KI-gestützten Übungen sind effektiv und machen Spaß. Beste Investition!"
+                </p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">T</div>
+                    <div class="testimonial-info">
+                        <h4>Thomas Weber</h4>
+                        <p>HR Director, GlobalWork</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section class="download" id="download">
+        <div class="download-content">
+            <div class="section-header fade-in">
+                <span class="section-tag">Jetzt starten</span>
+                <h2 class="section-title">Nezzo App herunterladen</h2>
+                <p class="section-subtitle">
+                    Wählen Sie Ihre Plattform und beginnen Sie noch heute mit der Nutzung 
+                    des kompletten Nezzo Ökosystems.
+                </p>
+            </div>
+            <div class="download-options">
+                <div class="download-option fade-in">
+                    <div class="download-icon">🍎</div>
+                    <h3>iOS / macOS</h3>
+                    <p>Für iPhone, iPad und Mac</p>
+                    <a href="#" class="download-btn">App Store</a>
+                </div>
+                <div class="download-option fade-in">
+                    <div class="download-icon">🤖</div>
+                    <h3>Android</h3>
+                    <p>Für Smartphones und Tablets</p>
+                    <a href="#" class="download-btn">Google Play</a>
+                </div>
+                <div class="download-option fade-in">
+                    <div class="download-icon">🪟</div>
+                    <h3>Windows</h3>
+                    <p>Für PC und Laptop</p>
+                    <a href="#" class="download-btn">Download .exe</a>
+                </div>
+                <div class="download-option fade-in">
+                    <div class="download-icon">🐧</div>
+                    <h3>Linux</h3>
+                    <p>Für alle Distributionen</p>
+                    <a href="#" class="download-btn">Download .deb/.rpm</a>
+                </div>
+                <div class="download-option fade-in">
+                    <div class="download-icon">🌐</div>
+                    <h3>Web App</h3>
+                    <p>Direkt im Browser nutzen</p>
+                    <a href="#" class="download-btn">Jetzt öffnen</a>
+                </div>
+                <div class="download-option fade-in">
+                    <div class="download-icon">📦</div>
+                    <h3>API</h3>
+                    <p>Für Entwickler</p>
+                    <a href="#" class="download-btn">Dokumentation</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="cta-box fade-in">
+            <div class="cta-content">
+                <h2>Bereit für den Einstieg?</h2>
+                <p>
+                    Starten Sie noch heute mit Nezzo App und erleben Sie die Zukunft der digitalen Zusammenarbeit.
+                </p>
+                <a href="#download" class="btn">Kostenlos registrieren</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <span class="footer-logo">Nezzo App</span>
+                <p>
+                    Ihr umfassendes digitales Ökosystem für KI-gestützte Kommunikation, 
+                    Cloud-Lösungen und innovative Technologien.
+                </p>
+                <div class="social-links">
+                    <a href="#" class="social-link" title="Facebook">f</a>
+                    <a href="#" class="social-link" title="Twitter">𝕏</a>
+                    <a href="#" class="social-link" title="LinkedIn">in</a>
+                    <a href="#" class="social-link" title="Instagram">📷</a>
+                    <a href="#" class="social-link" title="GitHub">⌨️</a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#nezzo-ai">Nezzo AI</a></li>
+                    <li><a href="#nezzo-chat">Nezzo Chat</a></li>
+                    <li><a href="#nezzo-cloud">Nezzo Cloud</a></li>
+                    <li><a href="#nezzo-host">Nezzo Host</a></li>
+                    <li><a href="#nezzo-vocab">Nezzo Vocab</a></li>
+                    <li><a href="#nezzo-text">Nezzo Text</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Unternehmen</h4>
+                <ul>
+                    <li><a href="#about">Über uns</a></li>
+                    <li><a href="#leadership">Team</a></li>
+                    <li><a href="#careers">Karriere</a></li>
+                    <li><a href="#press">Presse</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Rechtliches</h4>
+                <ul>
+                    <li><a href="#privacy">Datenschutz</a></li>
+                    <li><a href="#terms">AGB</a></li>
+                    <li><a href="#imprint">Impressum</a></li>
+                    <li><a href="#security">Sicherheit</a></li>
+                    <li><a href="#compliance">Compliance</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Kontakt</h4>
+                <p>📧 info@nezzi-app.com</p>
+                <p>📞 +49 (0) 123 456 7890</p>
+                <p>📍 Berlin, Deutschland</p>
+                <p>🏢 LobiGmbh & JoviGmbh</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>
+                © 2024 Nezzo App. Alle Rechte vorbehalten. 
+                Entwickelt von LobiGmbh (CEO) und JoviGmbh (COO).
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top" id="scrollTop" title="Nach oben">↑</button>
+
+    <script>
+        // ============================================
+        // LOADING SCREEN
+        // ============================================
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            setTimeout(() => {
+                loader.classList.add('hidden');
+            }, 1000);
+        });
+
+        // ============================================
+        // PARTICLE SYSTEM
+        // ============================================
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+        createParticles();
+
+        // ============================================
+        // NAVBAR SCROLL EFFECT
+        // ============================================
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // ============================================
+        // MOBILE MENU TOGGLE
+        // ============================================
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.textContent = '☰';
+            });
+        });
+
+        // ============================================
+        // SCROLL TO TOP BUTTON
+        // ============================================
+        const scrollTopBtn = document.getElementById('scrollTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // ============================================
+        // FADE IN ANIMATION ON SCROLL
+        // ============================================
+        const fadeElements = document.querySelectorAll('.fade-in');
+
+        const fadeInObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        fadeElements.forEach(element => {
+            fadeInObserver.observe(element);
+        });
+
+        // ============================================
+        // COUNTER ANIMATION
+        // ============================================
+        const statNumbers = document.querySelectorAll('.stat-number');
+
+        const animateCounter = (element) => {
+            const target = parseInt(element.getAttribute('data-target'));
+            const duration = 2000;
+            const step = target / (duration / 16);
+            let current = 0;
+
+            const updateCounter = () => {
+                current += step;
+                if (current < target) {
+                    element.textContent = Math.floor(current);
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    element.textContent = target;
+                    // Add K/M suffix for large numbers
+                    if (target >= 1000) {
+                        element.textContent = (target / 1000).toFixed(0) + 'K+';
+                    }
+                }
+            };
+
+            updateCounter();
+        };
+
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter(entry.target);
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.5
+        });
+
+        statNumbers.forEach(stat => {
+            counterObserver.observe(stat);
+        });
+
+        // ============================================
+        // SMOOTH SCROLL FOR ANCHOR LINKS
+        // ============================================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId !== '#') {
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const navHeight = navbar.offsetHeight;
+                        const targetPosition = targetElement.offsetTop - navHeight;
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+
+        // ============================================
+        // SERVICE CARD HOVER EFFECTS
+        // ============================================
+        const serviceCards = document.querySelectorAll('.service-card');
+
+        serviceCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                serviceCards.forEach(c => {
+                    if (c !== card) {
+                        c.style.opacity = '0.7';
+                        c.style.transform = 'scale(0.98)';
+                    }
+                });
+            });
+
+            card.addEventListener('mouseleave', function() {
+                serviceCards.forEach(c => {
+                    c.style.opacity = '1';
+                    c.style.transform = 'translateY(0)';
+                });
+            });
+        });
+
+        // ============================================
+        // DYNAMIC YEAR IN FOOTER
+        // ============================================
+        const yearElements = document.querySelectorAll('.footer-bottom p');
+        yearElements.forEach(el => {
+            el.innerHTML = el.innerHTML.replace('2024', new Date().getFullYear());
+        });
+
+        // ============================================
+        // DOWNLOAD BUTTON CLICK TRACKING
+        // ============================================
+        document.querySelectorAll('.download-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const platform = this.parentElement.querySelector('h3').textContent;
+                console.log(`Download initiated for: ${platform}`);
+                // Here you could add analytics tracking
+            });
+        });
+
+        // ============================================
+        // FORM VALIDATION (for future contact forms)
+        // ============================================
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        function validateForm(form) {
+            const inputs = form.querySelectorAll('input[required]');
+            let isValid = true;
+
+            inputs.forEach(input => {
+                if (!input.value.trim()) {
+                    isValid = false;
+                    input.style.borderColor = 'var(--danger-color)';
+                } else if (input.type === 'email' && !validateEmail(input.value)) {
+                    isValid = false;
+                    input.style.borderColor = 'var(--danger-color)';
+                } else {
+                    input.style.borderColor = 'var(--success-color)';
+                }
+            });
+
+            return isValid;
+        }
+
+        // ============================================
+        // LAZY LOADING FOR IMAGES (future implementation)
+        // ============================================
+        if ('IntersectionObserver' in window) {
+            const lazyImages = document.querySelectorAll('img[data-src]');
+            
+            const imageObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+
+            lazyImages.forEach(img => imageObserver.observe(img));
+        }
+
+        // ============================================
+        // PERFORMANCE OPTIMIZATION
+        // ============================================
+        // Debounce function for scroll events
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        // Throttle function for resize events
+        function throttle(func, limit) {
+            let inThrottle;
+            return function(...args) {
+                if (!inThrottle) {
+                    func.apply(this, args);
+                    inThrottle = true;
+                    setTimeout(() => inThrottle = false, limit);
+                }
+            };
+        }
+
+        // Optimized scroll handler
+        const optimizedScrollHandler = throttle(() => {
+            // Navbar scroll effect
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+
+            // Scroll to top button visibility
+            if (window.scrollY > 500) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        }, 100);
+
+        window.addEventListener('scroll', optimizedScrollHandler, { passive: true });
+
+        // ============================================
+        // ACCESSIBILITY ENHANCEMENTS
+        // ============================================
+        // Keyboard navigation for service cards
+        serviceCards.forEach(card => {
+            card.setAttribute('tabindex', '0');
+            card.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    const link = card.querySelector('.service-link');
+                    if (link) {
+                        link.click();
+                    }
+                }
+            });
+        });
+
+        // Skip to main content link
+        const skipLink = document.createElement('a');
+        skipLink.href = '#main-content';
+        skipLink.className = 'skip-link';
+        skipLink.textContent = 'Zum Hauptinhalt springen';
+        skipLink.style.cssText = `
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--primary-color);
+            color: white;
+            padding: 8px;
+            z-index: 10000;
+            transition: top 0.3s;
+        `;
+        document.body.insertBefore(skipLink, document.body.firstChild);
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Tab') {
+                skipLink.style.top = '0';
+            }
+        });
+
+        skipLink.addEventListener('blur', () => {
+            skipLink.style.top = '-40px';
+        });
+
+        // ============================================
+        // CONSOLE WELCOME MESSAGE
+        // ============================================
+        console.log('%c🚀 Welcome to Nezzo App!', 'font-size: 20px; font-weight: bold; color: #06b6d4;');
+        console.log('%cEntwickelt von LobiGmbh (CEO) und JoviGmbh (COO)', 'font-size: 14px; color: #7c3aed;');
+        console.log('%cServices: Nezzo AI, Nezzo Chat, Nezzo Cloud, Nezzo Host, Nezzo Vocab, Nezzo Text', 'font-size: 12px; color: #2563eb;');
+
+        // ============================================
+        // ERROR HANDLING
+        // ============================================
+        window.addEventListener('error', (e) => {
+            console.error('Nezzo App Error:', e.message);
+            // In production, you would send this to your error tracking service
+        });
+
+        // ============================================
+        // SERVICE WORKER REGISTRATION (for PWA)
+        // ============================================
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                // Uncomment below to register service worker for PWA functionality
+                // navigator.serviceWorker.register('/sw.js')
+                //     .then(registration => {
+                //         console.log('ServiceWorker registration successful');
+                //     })
+                //     .catch(err => {
+                //         console.log('ServiceWorker registration failed: ', err);
+                //     });
+            });
+        }
+
+        // ============================================
+        // ANALYTICS PLACEHOLDER
+        // ============================================
+        function trackEvent(category, action, label) {
+            console.log(`Analytics Event: ${category} - ${action} - ${label}`);
+            // Replace with actual analytics implementation
+            // gtag('event', action, {
+            //     event_category: category,
+            //     event_label: label
+            // });
+        }
+
+        // Track page views
+        trackEvent('Page', 'View', window.location.pathname);
+
+        // ============================================
+        // INITIALIZATION COMPLETE
+        // ============================================
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('Nezzo App initialized successfully');
+            
+            // Add loaded class to body for CSS hooks
+            document.body.classList.add('loaded');
+            
+            // Initialize any additional components here
+            initTooltips();
+            initModals();
+            initAccordions();
+        });
+
+        // ============================================
+        // ADDITIONAL UTILITY FUNCTIONS
+        // ============================================
+        
+        // Tooltip initialization
+        function initTooltips() {
+            // Placeholder for tooltip functionality
+            const tooltipElements = document.querySelectorAll('[data-tooltip]');
+            tooltipElements.forEach(el => {
+                el.addEventListener('mouseenter', showTooltip);
+                el.addEventListener('mouseleave', hideTooltip);
+            });
+        }
+
+        function showTooltip(e) {
+            // Implementation for showing tooltips
+        }
+
+        function hideTooltip(e) {
+            // Implementation for hiding tooltips
+        }
+
+        // Modal initialization
+        function initModals() {
+            // Placeholder for modal functionality
+        }
+
+        // Accordion initialization
+        function initAccordions() {
+            // Placeholder for accordion functionality
+        }
+
+        // ============================================
+        // THEME TOGGLE (Dark/Light Mode)
+        // ============================================
+        function toggleTheme() {
+            const body = document.body;
+            const isDark = body.classList.toggle('dark-theme');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        }
+
+        // Load saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.body.classList.add('dark-theme');
+        }
+
+        // ============================================
+        // LANGUAGE SWITCHER (Future Implementation)
+        // ============================================
+        const translations = {
+            de: {
+                welcome: 'Willkommen bei Nezzo App',
+                download: 'Jetzt herunterladen',
+                learnMore: 'Mehr erfahren',
+                services: 'Services',
+                features: 'Features',
+                team: 'Team',
+                testimonials: 'Referenzen',
+                contact: 'Kontakt'
+            },
+            en: {
+                welcome: 'Welcome to Nezzo App',
+                download: 'Download Now',
+                learnMore: 'Learn More',
+                services: 'Services',
+                features: 'Features',
+                team: 'Team',
+                testimonials: 'Testimonials',
+                contact: 'Contact'
+            }
+        };
+
+        function changeLanguage(lang) {
+            // Implementation for language switching
+            console.log(`Language changed to: ${lang}`);
+        }
+
+        // ============================================
+        // SEARCH FUNCTIONALITY (Future Implementation)
+        // ============================================
+        function searchSite(query) {
+            // Implementation for site-wide search
+            console.log(`Searching for: ${query}`);
+        }
+
+        // ============================================
+        // NOTIFICATION SYSTEM (Future Implementation)
+        // ============================================
+        function showNotification(message, type = 'info') {
+            // Implementation for toast notifications
+            console.log(`Notification (${type}): ${message}`);
+        }
+
+        // ============================================
+        // END OF JAVASCRIPT
+        // ============================================
+    </script>
+</body>
+</html>
